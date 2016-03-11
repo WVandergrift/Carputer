@@ -1,0 +1,45 @@
+    <!-- main footer -->
+    <footer id="footer" class="ng-scope footer_panel">
+        <img class="cover_art" ng-show="MediaPlayerService.nowPlaying" src="{{ MediaPlayerService.nowPlaying.coverArt }}" />
+        <div class="footer_controls uk-container-center uk-width-1-1">
+            <div class="footer_progress" ng-style="{ 'width' : MediaPlayerService.progress + '%' }"></div>
+            <span class="" ng-click="MediaPlayerService.startRadio()">
+                <i class="material-icons player_button cur-pointer md-color-white md-36">radio</i>
+            </span>
+            <span class="" ng-click="MediaPlayerService.playPreviousPlaylist()">
+                <i class="material-icons player_button cur-pointer md-color-white md-48">keyboard_arrow_left</i>
+            </span>
+            <span class="" ng-click="MediaPlayerService.togglePlayPause()">
+                <i class="material-icons player_button circular cur-pointer md-color-white md-48">{{ MediaPlayerService.isPlaying ? "pause" : "play_arrow" }}</i>
+            </span>
+            <span class="" ng-click="MediaPlayerService.playNextPlaylist()">
+                <i class="material-icons player_button cur-pointer md-color-white md-48">keyboard_arrow_right</i>
+            </span>
+            <span class="" ng-click="MediaPlayerService.favorite()">
+                <i class="material-icons player_button cur-pointer md-color-white md-36">star_border</i>
+            </span>
+        </div>
+        <div>
+            <span class="footer_material" ng-click="startSpeechRecognition()">
+                <i class="material-icons material_shadow player_button circular_material_red cur-pointer md-color-white md-48">keyboard_voice</i>
+            </span>
+        </div>
+    </footer>
+
+    <!-- Speech Recognition Modal -->
+    <div class="uk-modal" uk-modal="{bgclose:false}" id="speechRecModal">
+        <div class="uk-modal-dialog" style="top: 237px;">
+            <div class="uk-modal-header">
+                <h3 class="uk-modal-title center-text">Listening for Commands</h3>
+            </div>
+            <div class="center-div center-text">
+                <img src="/assets/img/spinners/comment.gif" />
+                <p class="heading_b">Try saying...</p>
+                <p class="heading_a">Play artist Casting Crowns</p>
+            </div>
+            <div class="uk-modal-footer uk-text-right">
+                <button type="button" class="md-btn md-btn-flat" ng-click="stopSpeechRecognition()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
