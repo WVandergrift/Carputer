@@ -112,6 +112,24 @@ App
                         label: 'Home'
                     }
                 })
+                .state("restricted.music", {
+                    url: "/music",
+                    templateUrl: 'app/music/musicGrid.html',
+                    controller: 'musicCtrl',
+                    resolve: {
+                        deps: ['$ocLazyLoad', function($ocLazyLoad) {
+                            return $ocLazyLoad.load([
+                                'lazy_ionRangeSlider',
+                                'lazy_masked_inputs',
+                                'lazy_character_counter',
+                                'app/components/forms/advancedController.js'
+                            ], {serie:true} );
+                        }]
+                    },
+                    data: {
+                        pageTitle: 'Music'
+                    }
+                })
                 // -- FORMS --
                 .state("restricted.forms", {
                     url: "/forms",

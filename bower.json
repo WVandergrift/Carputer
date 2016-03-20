@@ -103,6 +103,7 @@
   },
   "devDependencies": {
     "c3-angular": "^1.0.1",
-    "angular-breadcrumb": "^0.4.1"
+    "angular-breadcrumb": "^0.4.1",
+    "angular-tooltip": "ng-modal#*"
   }
 }

@@ -3,7 +3,7 @@
   <component name="WebServers">
     <option name="servers">
       <webServer id="7266c5ae-1990-4ebe-a895-6994f1002047" name="mysound.cloud" url="http://mysound.cloud">
-        <fileTransfer host="192.34.57.246" port="22" rootFolder="/var/www" accessType="SFTP" password="dff9dfc4dfc3dfdadfcfdfd9df8bdf9bdf93df9edf98" username="wvandergrift">
+        <fileTransfer host="192.34.57.246" port="22" accessType="SFTP" password="dff9dfc4dfc3dfdadfcfdfd9df8bdf9bdf93df9edf98" username="wvandergrift">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>

@@ -27,7 +27,7 @@
 /* alerts */
 .uk-alert {
   border: none;
-  background: #1976d2;
+  background: #344E65;
   color: #fff;
   text-shadow: none;
   padding-right: 32px;
@@ -9391,7 +9391,7 @@ a.waves-effect .waves-ripple {
 /* 7. partials (header,sidebars,top bar) ============= */
 /* main header */
 #header_main {
-  background: #1976d2;
+  background: #344E65;
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
   padding: 0 25px;
   height: 48px;
@@ -9631,7 +9631,7 @@ a.waves-effect .waves-ripple {
   left: 0;
   right: 0;
   height: 60px;
-  background: #1976d2;
+  background: #344E65;
   content: '';
   display: block;
 }
@@ -10405,7 +10405,7 @@ a.waves-effect .waves-ripple {
 /* user profile */
 .user_heading {
   padding: 24px;
-  background: #1976d2;
+  background: #344E65;
   color: #fff;
   position: relative;
   box-sizing: border-box;
@@ -10442,13 +10442,7 @@ a.waves-effect .waves-ripple {
   margin-right: 24px;
   position: relative;
 }
-@media only screen and (max-width: 959px) {
-  .user_heading_avatar {
-    float: none;
-    text-align: center;
-    margin: 0 0 8px;
-  }
-}
+
 @media only screen and (max-width: 959px) {
   .user_heading_avatar.fileinput {
     width: 82px;
@@ -13420,7 +13414,7 @@ body.pace-done > .page_preloader {
 .wizard > .steps > ul > li.done a,
 .wizard > .steps > ul > li.done a:hover,
 .wizard > .steps > ul > li.done a:active {
-  background: #1976d2;
+  background: #344E65;
   color: #fff;
 }
 .wizard > .steps > ul > li.error a,

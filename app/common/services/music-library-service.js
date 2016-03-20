@@ -10,6 +10,13 @@ App.factory('MusicLibraryService', ['$rootScope', '$q', 'PROPS', '$filter', 'Mus
     function ($rootScope, $q, PROPS, $filter, MusicLibraryAPI, Artist, Album, Song) {
         return {
 
+            allArtists: [], // library is a complete list of artists retrieved from the music library
+            allAlbums: [],
+            allSongs: [],
+            curArtists: [],
+            curAlbums: [],
+            curSongs: [],
+
             /**
              * @ngdoc object
              * @name method:getRandomSongs
@@ -81,6 +88,61 @@ App.factory('MusicLibraryService', ['$rootScope', '$q', 'PROPS', '$filter', 'Mus
                     },
                     function (error) {   //failure
                         console.log("Error in MusicLibraryService 'getSimilarSongs' API");
+                        deferred.reject(error);
+                    },
+                    function (info) {   //failure
+                        deferred.notify(info);
+                    });
+                return deferred.promise;
+            },
+
+            loadLibrary: function() {
+                var deferred = $q.defer();
+                var _this = this;
+
+                this.getArtists().then(function(artists){
+                    _this.library = artists;
+                    deferred.resolve();
+                }, function(error){
+                    deferred.reject(error);
+                });
+
+                return deferred.promise;
+            },
+
+            /**
+             * @ngdoc object
+             * @name method:getArtists
+             * @methodOf App.factory:MusicLibraryService
+             *
+             * @description
+             * Gets a list of all artists in the music library
+             *
+             * @return {array of Artists} if the call was successful, else returns an error
+             */
+            getArtists: function() {
+                var deferred = $q.defer();
+                var _this = this;
+                var artists = [];
+
+                console.log("In getArtists. Preparing to make API call");
+
+                MusicLibraryAPI.getArtists(
+                    {},
+                    function (data) {   //success
+                        var artistResult = data["subsonic-response"].artists;
+                        if (artistResult === null || !angular.isDefined(artistResult)) { deferred.reject() }
+
+                        angular.forEach(artistResult.index, function(artistIndex, key){
+                            angular.forEach(artistIndex.artist, function(artistData, key){
+                                artists.push(new Artist(artistData));
+                            });
+                        });
+                        console.log("Successfully got artists from the music library API");
+                        deferred.resolve(artists);
+                    },
+                    function (error) {   //failure
+                        console.log("Error in MusicLibraryService 'getArtists' API");
                         deferred.reject(error);
                     },
                     function (info) {   //failure
@@ -320,6 +382,10 @@ App.factory('MusicLibraryAPI', ['$resource', 'PROPS', function ($resource, PROPS
             id: '@id',
             count: '@count',
             includeNotPresent: '@includeNotPresent'}},
+        // Get a list of all artists in the specified folder or entire library
+        getArtists: {method: 'GET', params: {
+            method: 'getArtists.view',
+            musicFolderId: '@musicFolderId'}},
         // Get artist info, including an album list, by id
         getArtist: {method: 'GET', params: {
             method: 'getArtist.view',

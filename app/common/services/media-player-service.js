@@ -68,7 +68,6 @@ App.factory('MediaPlayerService', ['$rootScope', '$q', '$interval', 'PROPS', '$f
                 this.playlistPlaying = false;
                 this.stop();
                 this.audio.load(song.url);
-                this.audio.play();
             },
 
             playNextPlaylist: function() {
@@ -165,6 +164,16 @@ App.factory('MediaPlayerService', ['$rootScope', '$q', '$interval', 'PROPS', '$f
 
             initialize: function() {
                 //this points to the Audio5js instance
+                mediaPlayer.audio.on('canplay', function () {
+                    console.log('track loaded');
+                    if (!mediaPlayer.isPlaying) {
+                        mediaPlayer.play();
+                        mediaPlayer.isPlaying = true;
+                    }
+                    $rootScope.$apply();
+                }, mediaPlayer.audio);
+
+                //this points to the Audio5js instance
                 mediaPlayer.audio.on('play', function () {
                     console.log('track playing');
                     mediaPlayer.isPlaying = true;
@@ -180,6 +189,7 @@ App.factory('MediaPlayerService', ['$rootScope', '$q', '$interval', 'PROPS', '$f
                 mediaPlayer.audio.on('ended', function () {
                     console.log('track ended');
                     mediaPlayer.isPlaying = false;
+                    if (mediaPlayer.playlistPlaying) { mediaPlayer.playNextPlaylist() }
                     $rootScope.$apply();
                 }, mediaPlayer.audio);
 

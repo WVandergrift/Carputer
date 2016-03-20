@@ -5,7 +5,7 @@
       <paths name="mysound.cloud">
         <serverdata>
           <mappings>
-            <mapping deploy="/mysound.cloud/html" local="$PROJECT_DIR$" web="/" />
+            <mapping deploy="/var/www/mysound.cloud/html" local="$PROJECT_DIR$" web="/mysound.cloud/html" />
           </mappings>
         </serverdata>
       </paths>

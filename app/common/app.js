@@ -12,7 +12,10 @@ var App = angular.module('App', [
     'ngResource',
     'ncy-angular-breadcrumb',
     'ConsoleLogger',
-    'Audio5'
+    'Audio5',
+    'infinite-scroll',
+    'ngMaterial',
+    'angular.filter'
 ]);
 
 App.config(function($sceDelegateProvider) {
@@ -42,10 +45,12 @@ App
         '$timeout',
         'preloaders',
         'variables',
-        function ($rootScope, $state, $stateParams,$http,$window, $timeout,variables) {
+        function ($rootScope, $state, $stateParams,$http,$window, $timeout, variables) {
 
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
+
+            angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 250);
 
             $rootScope.$on('$stateChangeSuccess', function () {
                 // scroll view to top
