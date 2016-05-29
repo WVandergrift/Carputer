@@ -15,7 +15,8 @@ var App = angular.module('App', [
     'Audio5',
     'infinite-scroll',
     'ngMaterial',
-    'angular.filter'
+    'angular.filter',
+    'ngVidBg'
 ]);
 
 App.config(function($sceDelegateProvider) {
@@ -43,12 +44,12 @@ App
         '$http',
         '$window',
         '$timeout',
-        'preloaders',
-        'variables',
-        function ($rootScope, $state, $stateParams,$http,$window, $timeout, variables) {
+        'MediaPlayerService',
+        function ($rootScope, $state, $stateParams,$http,$window, $timeout, MediaPlayerService) {
 
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
+            $rootScope.backgroundImage = "assets/img/backgrounds/mic.jpg";
 
             angular.module('infinite-scroll').value('THROTTLE_MILLISECONDS', 250);
 

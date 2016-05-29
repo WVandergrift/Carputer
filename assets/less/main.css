@@ -5971,7 +5971,8 @@ label.md-label {
 }
 .md-list .uk-nestable-list > li.md-list-item-active,
 .md-list > li.md-list-item-active {
-  color: #7cb342;
+  color: #fff;
+  background-color: #416280;
 }
 .md-list .uk-nestable-list > li.md-list-item-disabled > .md-list-content,
 .md-list > li.md-list-item-disabled > .md-list-content {
@@ -6027,7 +6028,8 @@ label.md-label {
 }
 .md-list-addon > li.md-list-item-active .md-list-addon-element,
 .md-list-addon > li.md-list-item-active .md-list-addon-element .material-icons {
-  color: #7cb342;
+  color: #fff;
+  background-color: #344E65;
 }
 .md-list-addon-element {
   position: absolute;
@@ -13462,6 +13464,17 @@ body.pace-done > .page_preloader {
 .cur-pointer {
   cursor: pointer;
 }
+
+.large-font {
+  font-size: 20px;
+}
+
+a img {outline : none;}
+a {outline : none;}
+span {outline: none;}
+i {outline : none;}
+li {outline: none;}
+
 .full_screen_background {
   background: url('../img/backgrounds/circuits.jpg') center center no-repeat;
 }

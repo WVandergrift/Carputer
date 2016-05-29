@@ -2,11 +2,12 @@
 <project version="4">
   <component name="WebServers">
     <option name="servers">
-      <webServer id="7266c5ae-1990-4ebe-a895-6994f1002047" name="mysound.cloud" url="http://mysound.cloud">
-        <fileTransfer host="192.34.57.246" port="22" accessType="SFTP" password="dff9dfc4dfc3dfdadfcfdfd9df8bdf9bdf93df9edf98" username="wvandergrift">
+      <webServer id="7266c5ae-1990-4ebe-a895-6994f1002047" name="carputer.local" url="http://mysound.cloud">
+        <fileTransfer host="192.168.0.23" port="21" password="dff9dfc4dfc3dfdadfcfdfd9df8bdf9bdf93df9edf98" username="wilz_modz@hotmail.com">
           <advancedOptions>
             <advancedOptions dataProtectionLevel="Private" />
           </advancedOptions>
+          <option name="port" value="21" />
         </fileTransfer>
       </webServer>
     </option>

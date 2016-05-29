@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" serverName="mysound.cloud">
+  <component name="PublishConfigData" serverName="carputer.local">
     <serverData>
-      <paths name="mysound.cloud">
+      <paths name="carputer.local">
         <serverdata>
           <mappings>
-            <mapping deploy="/var/www/mysound.cloud/html" local="$PROJECT_DIR$" web="/mysound.cloud/html" />
+            <mapping deploy="/" local="$PROJECT_DIR$" web="/mysound.cloud/html" />
           </mappings>
         </serverdata>
       </paths>

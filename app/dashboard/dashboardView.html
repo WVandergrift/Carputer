@@ -76,9 +76,9 @@
             </div><!-- end ngRepeat: stat in dynamicStats -->
             </div>
 
-            <div class="uk-grid uk-grid-medium uk-grid-width-medium-1-2 uk-grid-width-large-1-2" data-uk-grid-margin data-uk-grid-match="{target:'.md-card-content'}">
-                <div ng-if="loaded">
-                    <div class="md-card">
+            <div class="uk-grid">
+                <div ng-if="loaded" class="uk-width-medium-1-2 uk-width-large-8-10">
+                    <div class="md-card large-font">
                         <div class="md-card-head head_background uk-text-center" style="background-image: url({{ MediaPlayerService.nowPlaying.coverArt }})">
                             <div class="md-card-content">
                                 <div class="epc_chart circular_background" easypiechart options="epc_media_progress" percent="MediaPlayerService.progress">
@@ -90,9 +90,11 @@
                         </div>
                         <div>
                             <ul class="md-list md-list-addon md-list-interactive" id="video_player_playlist">
-                                <li ng-repeat="song in MediaPlayerService.playlist" ng-class="{'md-list-item-active': $index == 0 }">
+                                <li ng-repeat="song in MediaPlayerService.playlist"
+                                    ng-click="playFromPlaylist($index)"
+                                    ng-class="{'md-list-item-active': MediaPlayerService.playlistIndex == $index }">
                                     <div class="md-list-addon-element">
-                                        <i ng-click="playFromPlaylist($index)" class="md-list-addon-icon material-icons">&#xE037;</i>
+                                        <i class="md-list-addon-icon material-icons">&#xE037;</i>
                                     </div>
                                     <div class="md-list-content">
                                         <span class="md-list-heading">{{song.title}}</span>
@@ -103,7 +105,7 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="uk-width-medium-1-2 uk-width-large-2-10">
                     <div class="md-card">
                         <div class="md-card-head head_background" style="background-image: url({{ weatherToday.backgroundImg }})">
                             <div class="md-card-head-menu">

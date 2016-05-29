@@ -24,6 +24,9 @@
     <!-- Angular Material -->
     <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
 
+    <!-- Background Video -->
+    <link rel="stylesheet" href="node_modules/angular-vidbg/dist/vidBg.min.css">
+
     <!-- JS -->
     <!-- common functions -->
     <script src="assets/js/common.min.js"></script>
@@ -47,8 +50,6 @@
     <script src="app/modules/angular-retina.js"></script>
     <!-- breadcrumbs -->
     <script src="bower_components/angular-breadcrumb/dist/angular-breadcrumb.min.js"></script>
-    <!-- custom directives -->
-    <script src="app/common/directives/custom-directives.js"></script>
     <!-- momentJs -->
     <script src="bower_components/moment/min/moment.min.js"></script>
     <!-- Buzz Audio -->
@@ -67,10 +68,14 @@
     <script src="/bower_components/angular-tooltip/src/angular-tooltip.js"></script>
     <!-- Angular Filter -->
     <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+    <!-- Video Background -->
+    <script src="node_modules/angular-vidbg/dist/vidBg.min.js"></script>
 
     <!-- altairApp -->
-
     <script src="app/common/app.js"></script>
+
+    <!-- custom directives -->
+    <script src="app/common/directives/custom-directives.js"></script>
 
     <script src="app/common/properties.js"></script>
     <script src="config/constants.js"></script>
@@ -104,7 +109,7 @@
     <!-- main stylesheet -->
     <link rel="stylesheet" href="assets/less/main.css" media="all" id="main_stylesheet">
 </head>
-<body class="{{main_theme}}" data-uk-observe ng-class="{
+<body class="{{main_theme}}" dynamic-background-image="{{backgroundImage}}" data-uk-observe ng-class="{
     'sidebar_main_active': primarySidebarActive && !miniSidebarActive && !topMenuActive && (!$state.is('login') && !$state.includes('error')),
     'sidebar_main_open': primarySidebarOpen && !miniSidebarActive && !topMenuActive && largeScreen && (!$state.is('login') && !$state.includes('error')),
     'sidebar_mini': miniSidebarActive && largeScreen && (!$state.is('login') && !$state.includes('error')),
@@ -123,8 +128,15 @@
 }" content-sidebar>
     <div id="page_preloader" ng-hide="hidePreloader"><img src="assets/img/page_preloader.gif" alt=""/></div>
 
+    <!-- Video Background
+    <vid-bg resources="['https://0.s3.envato.com/h264-video-previews/841119.mp4']" poster="" full-screen="true" muted="true" z-index="'22" play-info="{}" pause-play="true"></vid-bg>
+    -->
+
     <div ui-view="main_header"></div>
-    <div ui-view id="main_view" ng-class="{'uk-height-1-1': page_full_height }"></div>
+    <div style="height: 100%; width: 100%; overflow: hidden;">
+        <div ui-view id="main_view" ng-class="{'uk-height-1-1': page_full_height }"
+            style="height: 100%; width: 100%; overflow: auto; padding-right: 20px;"></div>
+    </div>
     <div ui-view="main_sidebar" ng-hide="topMenuActive"></div>
     <div ui-view="main_footer"></div>
 

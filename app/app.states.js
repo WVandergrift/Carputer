@@ -92,18 +92,6 @@ App
                                 'app/dashboard/dashboardController.js'
                             ], {serie: true} );
                         }],
-                        sale_chart_data: function($http){
-                            return $http({method: 'GET', url: 'data/mg_dashboard_chart.min.json'})
-                                .then(function (data) {
-                                    return data.data;
-                                });
-                        },
-                        user_data: function($http){
-                            return $http({ method: 'GET', url: 'data/user_data.json' })
-                                .then(function (data) {
-                                    return data.data;
-                                });
-                        }
                     },
                     data: {
                         pageTitle: 'Dashboard'
