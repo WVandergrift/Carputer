@@ -21,7 +21,7 @@ App.factory('TextToSpeechService', ['$q', '$timeout',
             sayPhrase: function(phrase) {
                 var deferred = $q.defer();
 
-                var msg = new SpeechSynthesisUtterance(this.prettyifyPhrase(phrase));
+                var msg = new SpeechSynthesisUtterance(this.prettifyPhrase(phrase));
                 msg.onend = function(event) {
                     console.log("Completed saying the phrase: " + phrase);
                     deferred.resolve();
@@ -45,7 +45,7 @@ App.factory('TextToSpeechService', ['$q', '$timeout',
              * @description
              * Check for words or symbols that need to be replaced in order to be pronounced correctly
              */
-            prettyifyPhrase: function (phrase) {
+            prettifyPhrase: function (phrase) {
                 var result = phrase;
 
                 result = result.replaceAll("feat.", "featuring");

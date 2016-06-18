@@ -10,7 +10,7 @@ App.factory('MusicLibraryService', ['$rootScope', '$q', 'PROPS', '$filter', 'Mus
     function ($rootScope, $q, PROPS, $filter, MusicLibraryAPI, Artist, Album, Song) {
         return {
 
-            allArtists: [], // library is a complete list of artists retrieved from the music library
+            allArtists: [], // is a complete list of artists retrieved from the music library
             allAlbums: [],
             allSongs: [],
             curArtists: [],
@@ -139,6 +139,8 @@ App.factory('MusicLibraryService', ['$rootScope', '$q', 'PROPS', '$filter', 'Mus
                             });
                         });
                         console.log("Successfully got artists from the music library API");
+                        console.log("Updating local artist cache");
+                        _this.allArtists = artists;
                         deferred.resolve(artists);
                     },
                     function (error) {   //failure
